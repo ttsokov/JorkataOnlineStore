@@ -1,0 +1,37 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+}
+
+.spacer {
+  flex: auto;
+}
+
+.routingLinks {
+  color: white;
+  margin-right: 20px;
+  
+  &:hover{
+    color: #99bbff;
+  }
+}
+
+.material-icons.md-36 {
+  font-size: 36px;
+} 
+
+.iconMenu {
+  margin-top: 10px;
+}
+
+#storeName {
+  font-size: 24px;
+}
