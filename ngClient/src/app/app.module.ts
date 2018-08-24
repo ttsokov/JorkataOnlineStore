@@ -7,11 +7,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
+import { ReactiveFormsModule } from '@angular/forms';
 
-import {MatMenuModule} from '@angular/material/menu';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatFormFieldModule, MatInputModule } from '@angular/material';
+import { MatCardModule } from '@angular/material/card';
+
 import { LoginComponent } from './login/login.component';
 import { FavouritesComponent } from './favourites/favourites.component';
 import { CartComponent } from './cart/cart.component';
+import { NavbarService } from './services/navbar.service';
+import { SignUpComponent } from './sign-up/sign-up.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +25,8 @@ import { CartComponent } from './cart/cart.component';
     NavbarComponent,
     LoginComponent,
     FavouritesComponent,
-    CartComponent
+    CartComponent,
+    SignUpComponent
   ],
   imports: [
     BrowserModule,
@@ -31,9 +38,13 @@ import { CartComponent } from './cart/cart.component';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    MatMenuModule
+    MatMenuModule,
+    MatInputModule,
+    MatCardModule,
+    ReactiveFormsModule,
+    MatFormFieldModule
   ],
-  providers: [],
+  providers: [NavbarService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
