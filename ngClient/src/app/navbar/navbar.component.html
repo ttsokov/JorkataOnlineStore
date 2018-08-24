@@ -1,4 +1,4 @@
-<mat-sidenav-container class="sidenav-container">
+<mat-sidenav-container class="sidenav-container"  *ngIf="navigation.isVisible()">
   <mat-sidenav-content>
     <mat-toolbar color="primary">
       <div id="sideNavigation">
@@ -14,6 +14,12 @@
       <span class="spacer"></span>
 
       <div class="iconMenu">
+          <a routerLink="/" routerLinkActive="active" class="routingLinks">
+            <i class="material-icons md-36">
+              home
+            </i>
+          </a>
+
         <a routerLink="/favourites" routerLinkActive="active" class="routingLinks">
           <i class="material-icons md-36">
             favorite
@@ -26,14 +32,24 @@
           </i>
         </a>
 
-        <a routerLink="/login" routerLinkActive="active" class="routingLinks" id="endIcon">       
-          <i class="material-icons md-36">
-            supervised_user_circle
-          </i>  
+        <a [matMenuTriggerFor] = "menu" class="routingLinks" id="endIcon"> 
+            <i class="material-icons md-36">
+                supervised_user_circle
+            </i>      
         </a>  
+        <mat-menu #menu="matMenu">
+            <a routerLink="/sign-up" routerLinkActive="active" mat-menu-item>
+              <mat-icon>person_add</mat-icon>
+              <span class="loginMenuItem">Sign-Up</span>
+            </a>
+
+            <a routerLink="/login" routerLinkActive="active" mat-menu-item>
+              <mat-icon>how_to_reg</mat-icon>
+              <span class="loginMenuItem">Login</span>
+            </a>
+        </mat-menu>
       </div>    
     </mat-toolbar>
     <!-- Add Content Here -->
-    <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
