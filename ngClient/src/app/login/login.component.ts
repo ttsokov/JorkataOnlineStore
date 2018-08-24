@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { NavbarService } from '../services/navbar.service';
 
@@ -9,10 +10,28 @@ import { NavbarService } from '../services/navbar.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(public navigation: NavbarService) { }
+  loginForm: FormGroup;
+
+  constructor(public navigation: NavbarService, public formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.navigation.hide();
+
+    this.loginForm = this.formBuilder.group({
+      'email': [null, [
+        Validators.required,
+        Validators.email
+      ]],
+      'password': [null, [
+        Validators.required,
+        Validators.minLength(6),
+        Validators.maxLength(24)
+      ]]
+    });
+  }
+
+  onLoginSubmit() {
+    alert("Logged in");
   }
 
 }
