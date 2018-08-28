@@ -8,10 +8,12 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from "@angular/common";
 
 import { MatMenuModule } from '@angular/material/menu';
 import { MatFormFieldModule, MatInputModule } from '@angular/material';
 import { MatCardModule } from '@angular/material/card';
+import { MatSelectModule } from '@angular/material/select';
 
 import { LoginComponent } from './login/login.component';
 import { FavouritesComponent } from './favourites/favourites.component';
@@ -42,7 +44,9 @@ import { SignUpComponent } from './sign-up/sign-up.component';
     MatInputModule,
     MatCardModule,
     ReactiveFormsModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    CommonModule,
+    MatSelectModule
   ],
   providers: [NavbarService],
   bootstrap: [AppComponent]

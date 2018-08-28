@@ -2,11 +2,15 @@
   <mat-sidenav-content>
     <mat-toolbar color="primary">
       <div id="sideNavigation">
-          <button mat-icon-button [matMenuTriggerFor] = "mainMenu" class="routingLinks">
+          <button mat-icon-button [matMenuTriggerFor] = "menu" class="routingLinks">
               <i class="material-icons md-36">
                 menu
               </i>
           </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>Item 1</button>
+            <button mat-menu-item>Item 2</button>
+          </mat-menu>
       </div>
 
       <span id="storeName">Jorkata's Online Store</span>
@@ -32,12 +36,12 @@
           </i>
         </a>
 
-        <a [matMenuTriggerFor] = "menu" class="routingLinks" id="endIcon"> 
+        <a [matMenuTriggerFor] = "userMenu" class="routingLinks" id="endIcon"> 
             <i class="material-icons md-36">
                 supervised_user_circle
             </i>      
         </a>  
-        <mat-menu #menu="matMenu">
+        <mat-menu #userMenu="matMenu">
             <a routerLink="/sign-up" routerLinkActive="active" mat-menu-item>
               <mat-icon>person_add</mat-icon>
               <span class="loginMenuItem">Sign-Up</span>
