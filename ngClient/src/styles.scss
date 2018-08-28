@@ -4,3 +4,15 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: 'Roboto', sans-serif; }
+
+h3 {
+    font-size: 40px;
+    font-style: italic;
+    color: #3c4caa;
+    margin-bottom: 20%;
+}
+
+#fieldContainer {
+    display: flex;
+    flex-direction: column;
+}

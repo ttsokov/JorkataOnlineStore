@@ -1,3 +1,65 @@
-<p>
-  sign-up works!
-</p>
+<div id="signUpFormContainer">
+  <div id="signUpForm">
+    <div>
+      <h3>Sign-Up</h3>
+    </div>
+
+    <form [formGroup]="signUpForm" (ngSubmit)="signUpForm.valid && onSignUpSubmit()">
+      <div id="fieldContainer">
+        <mat-form-field appearance="outline">
+          <mat-label>First Name</mat-label>
+          <input 
+            matInput
+            formControlName="firstName"
+            placeholder="First Name"
+          />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Last Name</mat-label>
+          <input 
+            matInput
+            formControlName="lastName"
+            placeholder="Last Name"
+          />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input 
+            matInput
+            formControlName="email"
+            placeholder="Email"
+          />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Phone</mat-label>
+          <input 
+            matInput
+            formControlName="phone"
+            placeholder="Phone (+359)"
+          />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Age</mat-label>
+          <mat-select #Age (selectionChange)="triggerResize()">
+            <mat-option *ngFor="let age of ages" value="age">{{ age }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input 
+            matInput
+            formControlName="password"
+            placeholder="Password"
+          />
+        </mat-form-field>
+      </div>
+
+      <button mat-raised-button color="primary" type="submit">Sign-Up</button>
+    </form>
+  </div>
+</div>  
