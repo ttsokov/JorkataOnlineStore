@@ -10,11 +10,16 @@ import { NavbarService } from '../services/navbar.service';
 })
 export class SignUpComponent implements OnInit {
 
-  signUpForm: FormGroup
+  signUpForm: FormGroup;
+
   ages: {}[];
 
-  constructor(public navigation: NavbarService, public formBuilder: FormBuilder) { 
-    this.ages = Array.from(Array(100), (x, i) => i + 1);
+  minAge = 18
+
+  maxAge = 100
+
+  constructor(public navigation: NavbarService, public formBuilder: FormBuilder) {
+    this.ages = Array.from(Array((this.maxAge - this.minAge) + 1), (v, index) => this.minAge++)
   }
 
   ngOnInit() {
@@ -33,8 +38,7 @@ export class SignUpComponent implements OnInit {
       ]],
       'phone': [null, [
         Validators.required,
-        Validators.pattern('\+3598[789]\d{7}'),
-        Validators.pattern('08[789]\d{7}')
+        Validators.pattern('^\\+3598[789]\\d{7}$')
       ]],
       'age': [null],
       'password': [null, [
