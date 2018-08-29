@@ -18,7 +18,7 @@
       <span class="spacer"></span>
 
       <div class="iconMenu">
-          <a routerLink="/" routerLinkActive="active" class="routingLinks">
+          <a routerLink="/home" routerLinkActive="active" class="routingLinks">
             <i class="material-icons md-36">
               home
             </i>
@@ -36,11 +36,11 @@
           </i>
         </a>
 
-        <a [matMenuTriggerFor] = "userMenu" class="routingLinks" id="endIcon"> 
+        <a [matMenuTriggerFor] = "userMenu" class="routingLinks" id="endIcon">
             <i class="material-icons md-36">
                 supervised_user_circle
-            </i>      
-        </a>  
+            </i>
+        </a>
         <mat-menu #userMenu="matMenu">
             <a routerLink="/sign-up" routerLinkActive="active" mat-menu-item>
               <mat-icon>person_add</mat-icon>
@@ -52,7 +52,7 @@
               <span class="loginMenuItem">Login</span>
             </a>
         </mat-menu>
-      </div>    
+      </div>
     </mat-toolbar>
     <!-- Add Content Here -->
   </mat-sidenav-content>
