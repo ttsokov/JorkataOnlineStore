@@ -20,6 +20,9 @@ public class User extends AbstractTimestamp {
     @Column(name = "last_name", nullable = false)
     private String lastName;
 
+    @Column(name = "username", nullable = false)
+    private String username;
+
     @Email
     @Column(name = "email", nullable = false)
     private String email;
@@ -56,44 +59,52 @@ public class User extends AbstractTimestamp {
         return firstName;
     }
 
-    public String getLastName() {
-        return lastName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
     public void setFirstName(String firstName) {
         this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
     }
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
     }
 
     public void setPhone(String phone) {
         this.phone = phone;
     }
 
+    public int getAge() {
+        return age;
+    }
+
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public String getPassword() {
+        return password;
     }
 
     public void setPassword(String password) {

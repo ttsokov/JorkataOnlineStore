@@ -11,6 +11,9 @@ public class CompactUserDTO {
     private String lastName;
 
     @NotEmpty
+    private String username;
+
+    @NotEmpty
     private String email;
 
     @NotEmpty
@@ -33,6 +36,14 @@ public class CompactUserDTO {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getEmail() {

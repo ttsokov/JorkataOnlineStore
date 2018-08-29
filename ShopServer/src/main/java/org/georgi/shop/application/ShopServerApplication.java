@@ -3,11 +3,16 @@ package org.georgi.shop.application;
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @SpringBootApplication
-@ComponentScan(basePackages = "org.georgi.shop.controller")
+@EntityScan(basePackages = "org.georgi.shop.model")
+@ComponentScan(basePackages = { "org.georgi.shop.controller",
+								"org.georgi.shop.service",
+								"org.georgi.shop.security"})
 public class ShopServerApplication {
 
 	public static void main(String[] args) {
@@ -18,4 +23,9 @@ public class ShopServerApplication {
     public ModelMapper modelMapper() {
 	    return new ModelMapper();
     }
+
+    @Bean
+	public BCryptPasswordEncoder bCryptPasswordEncoder() {
+		return new BCryptPasswordEncoder();
+	}
 }
