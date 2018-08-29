@@ -17,6 +17,9 @@ public class CreateUserDTO {
     @NotEmpty
     private String lastName;
 
+    @NotEmpty
+    private String username;
+
     @ValidEmail
     @NotEmpty
     private String email;
@@ -47,6 +50,14 @@ public class CreateUserDTO {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getEmail() {
