@@ -19,7 +19,7 @@ public class User extends AbstractTimestamp {
 
     @Column(name = "last_name", nullable = false)
     private String lastName;
-    
+
     @Column(name = "username", nullable = false)
     private String username;
 

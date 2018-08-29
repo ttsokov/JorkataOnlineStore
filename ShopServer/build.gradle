@@ -40,4 +40,6 @@ dependencies {
 	// https://mvnrepository.com/artifact/org.springframework.security/spring-security-jwt
 	compile group: 'org.springframework.security', name: 'spring-security-jwt', version: '1.0.9.RELEASE'
 
+	// https://mvnrepository.com/artifact/com.auth0/java-jwt
+	compile group: 'com.auth0', name: 'java-jwt', version: '3.4.0'
 }
