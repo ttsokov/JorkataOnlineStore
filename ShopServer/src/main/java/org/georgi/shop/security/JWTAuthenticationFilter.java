@@ -3,11 +3,11 @@ package org.georgi.shop.security;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.georgi.shop.model.User;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import javax.servlet.FilterChain;
@@ -31,9 +31,9 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     public Authentication attemptAuthentication(HttpServletRequest request,
                                                 HttpServletResponse response) throws AuthenticationException {
 
-        User credentials = null;
+        org.georgi.shop.model.User credentials = null;
         try {
-            credentials = new ObjectMapper().readValue(request.getInputStream(), User.class);
+            credentials = new ObjectMapper().readValue(request.getInputStream(), org.georgi.shop.model.User.class);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -56,6 +56,6 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                         .withExpiresAt(new Date(System.currentTimeMillis() + TokenConstants.EXPIRATION_TIME))
                         .sign(Algorithm.HMAC512(TokenConstants.SECRET));
 
-        response.addHeader(TokenConstants.AUTHORIZATION_HEADER, TokenConstants.BEARER.concat(token));
+        response.addHeader(TokenConstants.AUTHORIZATION_HEADER, TokenConstants.BEARER + token);
     }
 }
