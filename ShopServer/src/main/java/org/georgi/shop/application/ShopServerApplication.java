@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @SpringBootApplication
@@ -13,6 +14,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @ComponentScan(basePackages = { "org.georgi.shop.controller",
 								"org.georgi.shop.service",
 								"org.georgi.shop.security"})
+@EnableJpaRepositories(basePackages = "org.georgi.shop.repository")
 public class ShopServerApplication {
 
 	public static void main(String[] args) {
