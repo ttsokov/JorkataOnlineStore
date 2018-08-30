@@ -36,8 +36,9 @@ public class User extends AbstractTimestamp {
     private int age;
 
     @Column(name = "password", nullable = false)
-    @Size(min = 6, max = 24)
     private String password;
+
+    public User() {}
 
     public User(String firstName, String lastName,
                 @Email String email, String phone,
