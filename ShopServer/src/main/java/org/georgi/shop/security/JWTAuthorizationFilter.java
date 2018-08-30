@@ -30,6 +30,7 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
         if (authorizationHeader == null ||
                 !authorizationHeader.startsWith(TokenConstants.BEARER)) {
             chain.doFilter(request, response);
+            return;
         }
 
         SecurityContextHolder.getContext().setAuthentication(getAuthenticationToken(request));
