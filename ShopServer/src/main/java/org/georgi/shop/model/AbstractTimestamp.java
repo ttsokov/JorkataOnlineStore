@@ -16,14 +16,12 @@ public abstract class AbstractTimestamp {
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "created_at")
-    @NotNull
     @JsonIgnore
     private Calendar createdAt;
 
     @UpdateTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "updated_at")
-    @NotNull
     @JsonIgnore
     private Calendar updatedAt;
 
