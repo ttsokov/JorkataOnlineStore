@@ -5,6 +5,7 @@ import org.georgi.shop.model.User;
 import org.georgi.shop.repository.UserRepository;
 import org.georgi.shop.util.ServiceUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,9 +15,12 @@ public class UserService {
 
     private final UserRepository userRepository;
 
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
+
     @Autowired
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, BCryptPasswordEncoder bCryptPasswordEncoder) {
         this.userRepository = userRepository;
+        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
     }
 
     public List<User> getAllUsers() {
@@ -24,6 +28,7 @@ public class UserService {
     }
 
     public User createUser(User u) {
+        u.setPassword(this.bCryptPasswordEncoder.encode(u.getPassword()));
         return this.userRepository.save(u);
     }
 
