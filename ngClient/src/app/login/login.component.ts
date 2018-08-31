@@ -18,9 +18,9 @@ export class LoginComponent implements OnInit {
     this.navigation.hide();
 
     this.loginForm = this.formBuilder.group({
-      'email': [null, [
+      'username': [null, [
         Validators.required,
-        Validators.email
+        Validators.pattern('[A-Z]?[a-z0-9_-]+')
       ]],
       'password': [null, [
         Validators.required,
@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
   }
 
   onLoginSubmit() {
-    alert("Logged in");
+    alert('Logged in');
   }
 
 }
