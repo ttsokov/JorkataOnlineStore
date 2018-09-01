@@ -7,13 +7,38 @@
 }
 
 #signUpWrapper {
-    align-self: center;
-    padding: 5% 5% 5% 5%;
-    width: 20%;
-    border-left: 5px solid #4d88ff;
-    background: whitesmoke;
+  width: 40%;
+  padding: 5%;
+  align-self: center;
+  border-left: 5px solid #4d88ff;
+  background: whitesmoke;
 }
 
-button {
-    width: 100%;
+#inputContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#leftColumn {
+  flex: 1 1 50%;
+}
+
+#rightColumn {
+  flex: 1 1 50%;
+}
+
+.lastFields {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+}
+
+.lastFields>:first-child {
+  align-self: center;
+  margin-right: 12%;
+}
+
+.lastFields>:last-child {
+  width: 90%;
+  margin-left: 0;
 }
