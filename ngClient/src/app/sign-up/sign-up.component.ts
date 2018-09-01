@@ -6,7 +6,7 @@ import { ServerAPIService } from '../services/server-api.service';
 import { User } from '../classes/user';
 import { HttpClient } from '@angular/common/http';
 import {Router} from '@angular/router';
-import {errorHandler} from '@angular/platform-browser/src/browser';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -26,7 +26,8 @@ export class SignUpComponent implements OnInit {
   user: User;
 
   constructor(private navigation: NavbarService, private formBuilder: FormBuilder,
-              private client: HttpClient, private router: Router, private serverAPI: ServerAPIService) {
+              private router: Router,
+              private userService: UserService) {
     this.ages = Array.from(Array((this.maxAge - this.minAge) + 1), (v, index) => this.minAge++);
 
     this.user = new User('',
@@ -87,7 +88,7 @@ export class SignUpComponent implements OnInit {
 
     this.bind();
 
-    this.client.post(this.serverAPI.getAPIUrl().concat('/users'), this.user).subscribe(value => console.log(value));
+    this.userService.signUpUser(this.user).subscribe();
 
     this.router.navigateByUrl('/login');
   }
