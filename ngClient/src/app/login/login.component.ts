@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
 
-  constructor(public navigation: NavbarService, public formBuilder: FormBuilder) { }
+  constructor(private navigation: NavbarService, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.navigation.hide();
