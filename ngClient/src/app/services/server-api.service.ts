@@ -8,10 +8,10 @@ export class ServerAPIService {
   private APIUrl: String;
 
   constructor() {
-    this.APIUrl = "http://localhost:8080"
+    this.APIUrl = 'http://localhost:8080';
   }
 
-  getAPIUrl() {
+  getAPIUrl(): String {
     return this.APIUrl;
   }
 

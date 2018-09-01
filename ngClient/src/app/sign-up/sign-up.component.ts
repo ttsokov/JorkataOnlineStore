@@ -2,6 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { NavbarService } from '../services/navbar.service';
+import { ServerAPIService } from '../services/server-api.service';
+import { User } from '../classes/user';
+import { HttpClient } from '@angular/common/http';
+import {Router} from '@angular/router';
+import {errorHandler} from '@angular/platform-browser/src/browser';
 
 @Component({
   selector: 'app-sign-up',
@@ -18,8 +23,19 @@ export class SignUpComponent implements OnInit {
 
   maxAge = 100;
 
-  constructor(public navigation: NavbarService, public formBuilder: FormBuilder) {
+  user: User;
+
+  constructor(private navigation: NavbarService, private formBuilder: FormBuilder,
+              private client: HttpClient, private router: Router, private serverAPI: ServerAPIService) {
     this.ages = Array.from(Array((this.maxAge - this.minAge) + 1), (v, index) => this.minAge++);
+
+    this.user = new User('',
+      '',
+      '',
+      '',
+      '',
+      0,
+      '');
   }
 
   ngOnInit() {
@@ -28,11 +44,11 @@ export class SignUpComponent implements OnInit {
     this.signUpForm = this.formBuilder.group({
       'firstName': [null, [
         Validators.required,
-        Validators.pattern('[A-Z]?[a-z0-9_-]+')
+        Validators.pattern('^([A-Z]+|[a-z]+)[a-z0-9_-]+$')
       ]],
       'lastName': [null, [
         Validators.required,
-        Validators.pattern('[A-Z]?[a-z0-9_-]+')
+        Validators.pattern('^([A-Z]+|[a-z]+)[a-z0-9_-]+$')
       ]],
       'username': [null, [
         Validators.required,
@@ -46,7 +62,9 @@ export class SignUpComponent implements OnInit {
         Validators.required,
         Validators.pattern('^(\\+3598[789]\\d{7})|(08[789]\\d{7})$')
       ]],
-      'age': [null],
+      'age': [null, [
+        Validators.required
+      ]],
       'password': [null, [
         Validators.required,
         Validators.minLength(6),
@@ -55,8 +73,23 @@ export class SignUpComponent implements OnInit {
     });
   }
 
+  bind() {
+    this.user.firstName = this.signUpForm.get('firstName').value;
+    this.user.lastName = this.signUpForm.get('lastName').value;
+    this.user.username = this.signUpForm.get('username').value;
+    this.user.email = this.signUpForm.get('email').value;
+    this.user.phone = this.signUpForm.get('phone').value;
+    this.user.age = this.signUpForm.get('age').value;
+    this.user.password = this.signUpForm.get('password').value;
+  }
+
   onSignUpSubmit() {
-    alert('Signed up');
+
+    this.bind();
+
+    this.client.post(this.serverAPI.getAPIUrl().concat('/users'), this.user).subscribe(value => console.log(value));
+
+    this.router.navigateByUrl('/login');
   }
 
 }

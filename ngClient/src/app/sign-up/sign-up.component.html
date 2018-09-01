@@ -13,7 +13,16 @@
               matInput
               formControlName="firstName"
               placeholder="First Name"
+              required
             />
+
+            <mat-error *ngIf="signUpForm.get('firstName').hasError('required')">
+              <strong>Please enter first name!</strong>
+            </mat-error>
+
+            <mat-error *ngIf="signUpForm.get('firstName').hasError('pattern')">
+              <strong>Please enter <span style="color: darkred">valid</span> first name!</strong>
+            </mat-error>
           </mat-form-field>
 
           <mat-form-field appearance="outline">
@@ -22,7 +31,16 @@
               matInput
               formControlName="lastName"
               placeholder="Last Name"
+              required
             />
+
+            <mat-error *ngIf="signUpForm.get('lastName').hasError('required')">
+                <strong>Please enter last name!</strong>
+            </mat-error>
+
+            <mat-error *ngIf="signUpForm.get('lastName').hasError('pattern')">
+              <strong>Please enter <span style="color: darkred">valid</span> last name!</strong>
+            </mat-error>
           </mat-form-field>
 
           <mat-form-field appearance="outline">
@@ -31,11 +49,18 @@
               matInput
               formControlName="username"
               placeholder="Username"
+              required
             />
+
+            <mat-error *ngIf="signUpForm.get('username').hasError('required')">
+              <strong>Please enter username!</strong>
+            </mat-error>
+
+            <mat-error *ngIf="signUpForm.get('username').hasError('pattern')">
+              <strong>Please enter <span style="color: darkred">valid</span> username!</strong>
+            </mat-error>
           </mat-form-field>
         </div>
-
-        <div id="separator"></div>
 
         <div id="rightColumn">
           <mat-form-field appearance="outline">
@@ -44,7 +69,16 @@
               matInput
               formControlName="email"
               placeholder="Email"
+              required
             />
+
+            <mat-error *ngIf="signUpForm.get('email').hasError('required')">
+              <strong>Please enter email address!</strong>
+            </mat-error>
+
+            <mat-error *ngIf="signUpForm.get('email').hasError('email')">
+              <strong>Please enter <span style="color: darkred">valid</span> email!</strong>
+            </mat-error>
           </mat-form-field>
 
           <mat-form-field appearance="outline">
@@ -53,25 +87,48 @@
               matInput
               formControlName="phone"
               placeholder="Phone (+359)"
+              required
             />
+
+            <mat-error *ngIf="signUpForm.get('phone').hasError('required')">
+              <strong>Please enter mobile phone!</strong>
+            </mat-error>
+
+            <mat-error *ngIf="signUpForm.get('phone').hasError('pattern')">
+              <strong>Please enter <span style="color: darkred">valid</span> mobile phone!</strong>
+            </mat-error>
           </mat-form-field>
 
           <mat-form-field appearance="outline">
             <mat-label>Password</mat-label>
             <input
               matInput
+              type="password"
               formControlName="password"
               placeholder="Password"
+              required
             />
+
+            <mat-error *ngIf="signUpForm.get('password').hasError('required')">
+              <strong>Please enter password!</strong>
+            </mat-error>
+
+            <mat-error *ngIf="signUpForm.get('password').hasError('minlength') || signUpForm.get('password').hasError('maxlength')">
+              <strong>Please enter password <span style="color: darkred">between 6 and 24 characters!</span></strong>
+            </mat-error>
           </mat-form-field>
         </div>
 
         <div class="lastFields">
           <mat-form-field appearance="outline">
             <mat-label>Age</mat-label>
-            <mat-select #Age>
+            <mat-select #Age formControlName="age">
               <mat-option *ngFor="let age of ages" value="age">{{ age }}</mat-option>
             </mat-select>
+
+            <mat-error *ngIf="signUpForm.get('age').hasError('required')">
+              <strong>Please choose age!</strong>
+            </mat-error>
           </mat-form-field>
 
           <button mat-raised-button color="primary" type="submit">Sign-Up</button>
