@@ -7,11 +7,11 @@
     <form [formGroup]="loginForm" (ngSubmit)="loginForm.valid && onLoginSubmit()">
       <div id="fieldContainer">
         <mat-form-field appearance="outline">
-            <mat-label>Email</mat-label>
+            <mat-label>Username</mat-label>
             <input
               matInput
-              formControlName="email"
-              placeholder="Enter your email address"
+              formControlName="username"
+              placeholder="Enter your username"
             /> 
         </mat-form-field>
 

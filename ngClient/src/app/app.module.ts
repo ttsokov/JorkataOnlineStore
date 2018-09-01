@@ -15,6 +15,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatFormFieldModule, MatInputModule } from '@angular/material';
 import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
+import { FormsModule } from '@angular/forms';
 
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
@@ -53,7 +54,8 @@ import { UserService } from './services/user.service';
     MatFormFieldModule,
     CommonModule,
     MatSelectModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     NavbarService,
