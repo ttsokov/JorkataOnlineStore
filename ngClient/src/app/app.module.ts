@@ -26,6 +26,10 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { NavbarService } from './services/navbar.service';
 import { ServerAPIService } from './services/server-api.service';
 import { UserService } from './services/user.service';
+import { AuthenticationService } from './authentication/authentication.service';
+import { AuthenticationGuardService } from './authentication/authentication-guard.service';
+import { ErrorInterceptorService } from './authentication/error-interceptor.service';
+import { JwtInterceptorService } from './authentication/jwt-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -60,7 +64,11 @@ import { UserService } from './services/user.service';
   providers: [
     NavbarService,
     ServerAPIService,
-    UserService
+    UserService,
+    AuthenticationService,
+    AuthenticationGuardService,
+    ErrorInterceptorService,
+    JwtInterceptorService
    ],
   bootstrap: [AppComponent]
 })
