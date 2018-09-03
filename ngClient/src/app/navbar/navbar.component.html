@@ -37,20 +37,28 @@
         </a>
 
         <a [matMenuTriggerFor] = "userMenu" class="routingLinks" id="endIcon">
-            <i class="material-icons md-36">
+            <i *ngIf="isUserLoggedIn()" class="material-icons md-36">
+              verified_user
+            </i>
+            <i *ngIf="!isUserLoggedIn()" class="material-icons md-36">
                 supervised_user_circle
             </i>
         </a>
         <mat-menu #userMenu="matMenu">
-            <a routerLink="/sign-up" routerLinkActive="active" mat-menu-item>
-              <mat-icon>person_add</mat-icon>
-              <span class="loginMenuItem">Sign-Up</span>
-            </a>
+          <a *ngIf="!isUserLoggedIn()" routerLink="/sign-up" routerLinkActive="active" mat-menu-item>
+            <mat-icon>person_add</mat-icon>
+            <span class="loginMenuItem">Sign-Up</span>
+          </a>
 
-            <a routerLink="/login" routerLinkActive="active" mat-menu-item>
-              <mat-icon>how_to_reg</mat-icon>
-              <span class="loginMenuItem">Login</span>
-            </a>
+          <a *ngIf="!isUserLoggedIn()" routerLink="/login" routerLinkActive="active" mat-menu-item>
+            <mat-icon>how_to_reg</mat-icon>
+            <span class="loginMenuItem">Login</span>
+          </a>
+
+          <a *ngIf="isUserLoggedIn()" routerLink="/login" routerLinkActive="active" mat-menu-item>
+            <mat-icon>exit_to_app</mat-icon>
+            <span class="loginMenuItem">Logout</span>
+          </a>
         </mat-menu>
       </div>
     </mat-toolbar>
