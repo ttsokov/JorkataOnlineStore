@@ -18,7 +18,6 @@ export class User {
     this._password = password;
   }
 
-
   get firstName(): String {
     return this._firstName;
   }

@@ -2,11 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { NavbarService } from '../services/navbar.service';
-import { ServerAPIService } from '../services/server-api.service';
 import { User } from '../classes/user';
-import { HttpClient } from '@angular/common/http';
 import {Router} from '@angular/router';
 import { UserService } from '../services/user.service';
+import {throwError} from 'rxjs';
 
 @Component({
   selector: 'app-sign-up',
@@ -88,9 +87,12 @@ export class SignUpComponent implements OnInit {
 
     this.bind();
 
-    this.userService.signUpUser(this.user).subscribe();
-
-    this.router.navigateByUrl('/login');
+    this.userService.signUpUser(this.user).subscribe(response => {
+      this.router.navigateByUrl('/login');
+    }, error => {
+      this.router.navigateByUrl('/sign-up');
+      return throwError(error);
+    });
   }
 
 }
