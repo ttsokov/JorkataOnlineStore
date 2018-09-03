@@ -6,6 +6,7 @@ import { FavouritesComponent } from './favourites/favourites.component';
 import { CartComponent } from './cart/cart.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { HomeComponent } from './home/home.component';
+import { AuthenticationGuardService } from './authentication/authentication-guard.service';
 
 const routes: Routes = [
   {
@@ -27,11 +28,13 @@ const routes: Routes = [
   },
   {
     path: 'favourites',
-    component: FavouritesComponent
+    component: FavouritesComponent,
+    canActivate: [AuthenticationGuardService]
   },
   {
     path: 'cart',
-    component: CartComponent
+    component: CartComponent,
+    canActivate: [AuthenticationGuardService]
   }
 ];
 
