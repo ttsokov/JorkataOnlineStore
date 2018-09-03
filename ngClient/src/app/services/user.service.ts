@@ -24,10 +24,10 @@ export class UserService {
   }
 
   signUpUser(user: User): Observable<{}> {
-    return this.client.post(this.serverAPI.getAPIUrl().concat('/users'), user);
+    return this.client.post(this.serverAPI.getAPIUrl().concat('/users'), user, { observe: 'response' });
   }
 
-  loginUser(username: String,  password: String): Observable<{}> {
+  loginUser(username: String,  password: String) {
     return this.authService.loginUser(username, password);
   }
 }
