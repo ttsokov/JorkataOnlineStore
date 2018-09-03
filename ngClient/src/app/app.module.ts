@@ -10,6 +10,7 @@ import { MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, Mat
 import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { MatMenuModule } from '@angular/material/menu';
 import { MatFormFieldModule, MatInputModule } from '@angular/material';
@@ -59,7 +60,8 @@ import { JwtInterceptorService } from './authentication/jwt-interceptor.service'
     CommonModule,
     MatSelectModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatTooltipModule
   ],
   providers: [
     NavbarService,
