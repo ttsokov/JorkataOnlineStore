@@ -11,11 +11,10 @@ export class AuthenticationService {
 
   constructor(private client: HttpClient, private serverAPI: ServerAPIService) { }
 
-  loginUser(username: String, password: String): Observable<{}> {
-    return this.client.post(this.serverAPI.getAPIUrl().concat('/login'), { username, password }).pipe(
+  loginUser(username: String, password: String) {
+    return this.client.post(this.serverAPI.getAPIUrl().concat('/login'), { username, password }, { observe: 'response' }).pipe(
       map(response => {
-
-        if (response && response.hasOwnProperty('Authorization')) {
+        if (response && response.headers.has('Authorization')) {
           localStorage.setItem('loggedInUser', JSON.stringify(response));
         }
 
