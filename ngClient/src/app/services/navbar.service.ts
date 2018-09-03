@@ -7,7 +7,7 @@ export class NavbarService {
 
   private visible: boolean;
 
-  constructor() { 
+  constructor() {
     this.visible = true;
   }
 

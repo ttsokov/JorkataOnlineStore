@@ -28,14 +28,7 @@ export class SignUpComponent implements OnInit {
               private router: Router,
               private userService: UserService) {
     this.ages = Array.from(Array((this.maxAge - this.minAge) + 1), (v, index) => this.minAge++);
-
-    this.user = new User('',
-      '',
-      '',
-      '',
-      '',
-      0,
-      '');
+    this.user = new User('', '', '', '', '', 0, '');
   }
 
   ngOnInit() {

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { NavbarService } from '../services/navbar.service';
+import { AuthenticationService } from '../authentication/authentication.service';
 
 @Component({
   selector: 'app-navbar',
@@ -17,6 +18,10 @@ export class NavbarComponent {
       map(result => result.matches)
     );
 
-  constructor(private breakpointObserver: BreakpointObserver, public navigation: NavbarService) {}
+  constructor(private breakpointObserver: BreakpointObserver, private navigation: NavbarService,
+              private authService: AuthenticationService) {}
 
+  isUserLoggedIn(): boolean {
+    return this.authService.isUserLoggedIn();
+  }
 }
