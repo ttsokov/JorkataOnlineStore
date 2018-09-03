@@ -25,13 +25,21 @@
           </a>
 
         <a routerLink="/favourites" routerLinkActive="active" class="routingLinks">
-          <i class="material-icons md-36">
+          <i *ngIf="isUserLoggedIn()" class="material-icons md-36">
+            favorite
+          </i>
+
+          <i *ngIf="!isUserLoggedIn()" class="material-icons md-36" matTooltip="Click to login!">
             favorite
           </i>
         </a>
 
         <a routerLink="/cart" routerLinkActive="active" class="routingLinks">
-          <i class="material-icons md-36">
+          <i *ngIf="isUserLoggedIn()" class="material-icons md-36">
+            shopping_cart
+          </i>
+
+          <i *ngIf="!isUserLoggedIn()" class="material-icons md-36" matTooltip="Click to login!">
             shopping_cart
           </i>
         </a>
