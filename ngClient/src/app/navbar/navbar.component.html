@@ -55,7 +55,7 @@
             <span class="loginMenuItem">Login</span>
           </a>
 
-          <a *ngIf="isUserLoggedIn()" routerLink="/login" routerLinkActive="active" mat-menu-item>
+          <a *ngIf="isUserLoggedIn()" (click)="logoutUser()" routerLink="/home" routerLinkActive="active" mat-menu-item>
             <mat-icon>exit_to_app</mat-icon>
             <span class="loginMenuItem">Logout</span>
           </a>
