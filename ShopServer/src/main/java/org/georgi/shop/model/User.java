@@ -1,5 +1,7 @@
 package org.georgi.shop.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Email;
@@ -37,6 +39,10 @@ public class User extends AbstractTimestamp {
 
     @Column(name = "password", nullable = false)
     private String password;
+
+    @OneToOne(mappedBy = "user")
+    @JsonIgnore
+    private Cart cart;
 
     public User() {}
 
