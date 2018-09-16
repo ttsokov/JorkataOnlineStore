@@ -15,6 +15,7 @@ public class Category extends AbstractTimestamp {
     private long categoryId;
 
     @NotEmpty
+    @Column(name = "name", unique = true)
     private String name;
 
     @OneToMany(mappedBy = "category", fetch = FetchType.EAGER, cascade = CascadeType.ALL)

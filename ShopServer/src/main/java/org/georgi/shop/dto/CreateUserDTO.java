@@ -2,8 +2,8 @@ package org.georgi.shop.dto;
 
 import org.georgi.shop.annotations.ValidEmail;
 import org.georgi.shop.annotations.ValidPhone;
+import org.hibernate.validator.constraints.UniqueElements;
 
-import javax.persistence.Id;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;

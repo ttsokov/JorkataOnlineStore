@@ -52,5 +52,4 @@ public class UserController {
 
         return this.modelMapper.map(createdUser, CompactUserDTO.class);
     }
-
 }

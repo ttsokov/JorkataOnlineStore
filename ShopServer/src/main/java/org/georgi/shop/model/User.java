@@ -22,7 +22,7 @@ public class User extends AbstractTimestamp {
     @Column(name = "last_name", nullable = false)
     private String lastName;
 
-    @Column(name = "username", nullable = false)
+    @Column(name = "username", nullable = false, unique = true)
     private String username;
 
     @Email
@@ -60,6 +60,10 @@ public class User extends AbstractTimestamp {
 
     public long getId() {
         return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getFirstName() {
